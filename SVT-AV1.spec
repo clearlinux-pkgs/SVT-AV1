@@ -4,7 +4,7 @@
 #
 Name     : SVT-AV1
 Version  : 0.7.0
-Release  : 2
+Release  : 3
 URL      : https://github.com/OpenVisualCloud/SVT-AV1/archive/v0.7.0.tar.gz
 Source0  : https://github.com/OpenVisualCloud/SVT-AV1/archive/v0.7.0.tar.gz
 Summary  : AV1-compliant encoder library core.
@@ -69,13 +69,14 @@ license components for the SVT-AV1 package.
 
 %prep
 %setup -q -n SVT-AV1-0.7.0
+cd %{_builddir}/SVT-AV1-0.7.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570040048
+export SOURCE_DATE_EPOCH=1604709586
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -83,19 +84,19 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570040048
+export SOURCE_DATE_EPOCH=1604709586
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SVT-AV1
-cp LICENSE.md %{buildroot}/usr/share/package-licenses/SVT-AV1/LICENSE.md
-cp third_party/googletest/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/third_party_googletest_LICENSE
+cp %{_builddir}/SVT-AV1-0.7.0/LICENSE.md %{buildroot}/usr/share/package-licenses/SVT-AV1/f50c4c202ba0a7b1c89c97ccc7ee168151260d28
+cp %{_builddir}/SVT-AV1-0.7.0/third_party/googletest/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/5a2314153eadadc69258a9429104cd11804ea304
 pushd clr-build
 %make_install
 popd
@@ -130,5 +131,5 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/SVT-AV1/LICENSE.md
-/usr/share/package-licenses/SVT-AV1/third_party_googletest_LICENSE
+/usr/share/package-licenses/SVT-AV1/5a2314153eadadc69258a9429104cd11804ea304
+/usr/share/package-licenses/SVT-AV1/f50c4c202ba0a7b1c89c97ccc7ee168151260d28
