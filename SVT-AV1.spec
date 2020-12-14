@@ -4,7 +4,7 @@
 #
 Name     : SVT-AV1
 Version  : 0.7.0
-Release  : 3
+Release  : 4
 URL      : https://github.com/OpenVisualCloud/SVT-AV1/archive/v0.7.0.tar.gz
 Source0  : https://github.com/OpenVisualCloud/SVT-AV1/archive/v0.7.0.tar.gz
 Summary  : AV1-compliant encoder library core.
