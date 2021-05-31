@@ -1,6 +1,4 @@
 libSvtAv1Dec.so.0:Log2f_ASM
-libSvtAv1Dec.so.0:cpuinfo_deinitialize
-libSvtAv1Dec.so.0:cpuinfo_initialize
 libSvtAv1Dec.so.0:picture_copy_kernel_sse2
 libSvtAv1Dec.so.0:svt_aom_dc_128_predictor_16x16_sse2
 libSvtAv1Dec.so.0:svt_aom_dc_128_predictor_32x32_sse2
@@ -56,9 +54,8 @@ libSvtAv1Enc.so.0:Log2f_ASM
 libSvtAv1Enc.so.0:RestoreRegister
 libSvtAv1Enc.so.0:RunEmms
 libSvtAv1Enc.so.0:SaveRegister
-libSvtAv1Enc.so.0:cpuinfo_deinitialize
-libSvtAv1Enc.so.0:cpuinfo_initialize
 libSvtAv1Enc.so.0:picture_copy_kernel_sse2
+libSvtAv1Enc.so.0:svt_add_metadata
 libSvtAv1Enc.so.0:svt_aom_dc_128_predictor_16x16_sse2
 libSvtAv1Enc.so.0:svt_aom_dc_128_predictor_32x32_sse2
 libSvtAv1Enc.so.0:svt_aom_dc_128_predictor_4x4_sse2
@@ -98,6 +95,18 @@ libSvtAv1Enc.so.0:svt_aom_highbd_dc_predictor_4x4_sse2
 libSvtAv1Enc.so.0:svt_aom_highbd_dc_predictor_8x8_sse2
 libSvtAv1Enc.so.0:svt_aom_highbd_v_predictor_4x4_sse2
 libSvtAv1Enc.so.0:svt_aom_highbd_v_predictor_8x8_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_avg_variance16xh_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_avg_variance16xh_ssse3
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_avg_variance4xh_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_avg_variance4xh_ssse3
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_avg_variance8xh_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_avg_variance8xh_ssse3
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_variance16xh_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_variance16xh_ssse3
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_variance4xh_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_variance4xh_ssse3
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_variance8xh_sse2
+libSvtAv1Enc.so.0:svt_aom_sub_pixel_variance8xh_ssse3
 libSvtAv1Enc.so.0:svt_aom_subtract_block_sse2
 libSvtAv1Enc.so.0:svt_aom_v_predictor_16x16_sse2
 libSvtAv1Enc.so.0:svt_aom_v_predictor_32x32_sse2
@@ -116,4 +125,9 @@ libSvtAv1Enc.so.0:svt_av1_enc_set_parameter
 libSvtAv1Enc.so.0:svt_av1_enc_stream_header
 libSvtAv1Enc.so.0:svt_av1_enc_stream_header_release
 libSvtAv1Enc.so.0:svt_av1_get_recon
+libSvtAv1Enc.so.0:svt_metadata_alloc
+libSvtAv1Enc.so.0:svt_metadata_array_alloc
+libSvtAv1Enc.so.0:svt_metadata_array_free
+libSvtAv1Enc.so.0:svt_metadata_free
+libSvtAv1Enc.so.0:svt_metadata_size
 libSvtAv1Enc.so.0:svt_picture_average_kernel_sse2
