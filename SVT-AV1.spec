@@ -4,12 +4,12 @@
 #
 Name     : SVT-AV1
 Version  : 0.9.0
-Release  : 9
+Release  : 10
 URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v0.9.0/SVT-AV1-v0.9.0.tar.gz
 Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v0.9.0/SVT-AV1-v0.9.0.tar.gz
 Summary  : AV1-compliant encoder library core.
 Group    : Development/Tools
-License  : BSD-2-Clause BSD-3-Clause MIT
+License  : BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear MIT
 Requires: SVT-AV1-bin = %{version}-%{release}
 Requires: SVT-AV1-lib = %{version}-%{release}
 Requires: SVT-AV1-license = %{version}-%{release}
@@ -75,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643045025
+export SOURCE_DATE_EPOCH=1643397100
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -91,10 +91,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1643045025
+export SOURCE_DATE_EPOCH=1643397100
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SVT-AV1
 cp %{_builddir}/SVT-AV1-v0.9.0/LICENSE-BSD2.md %{buildroot}/usr/share/package-licenses/SVT-AV1/3a6355145854d7b1eab7a96b586b49b1f3925041
+cp %{_builddir}/SVT-AV1-v0.9.0/LICENSE.md %{buildroot}/usr/share/package-licenses/SVT-AV1/46e7694aaf9130a640379739ddc0b972f98a7230
 cp %{_builddir}/SVT-AV1-v0.9.0/third_party/cpuinfo/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/3e10e8cc50f6524daf4c62cc0daae3ccd187da3e
 cp %{_builddir}/SVT-AV1-v0.9.0/third_party/cpuinfo/deps/clog/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/aef1ae9e4471bbac8a19a56ae105e87602ab02bc
 cp %{_builddir}/SVT-AV1-v0.9.0/third_party/fastfeat/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/7cbe19df00ff13a33eb7638354c37c4f7382f94f
@@ -138,6 +139,7 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/SVT-AV1/3a6355145854d7b1eab7a96b586b49b1f3925041
 /usr/share/package-licenses/SVT-AV1/3e10e8cc50f6524daf4c62cc0daae3ccd187da3e
+/usr/share/package-licenses/SVT-AV1/46e7694aaf9130a640379739ddc0b972f98a7230
 /usr/share/package-licenses/SVT-AV1/4902cae9d3ebedcfbd51da29a80c5eba5c7e308a
 /usr/share/package-licenses/SVT-AV1/5a2314153eadadc69258a9429104cd11804ea304
 /usr/share/package-licenses/SVT-AV1/7cbe19df00ff13a33eb7638354c37c4f7382f94f
