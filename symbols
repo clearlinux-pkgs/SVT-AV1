@@ -130,6 +130,7 @@ libSvtAv1Enc.so.0:svt_av1_enc_get_packet
 libSvtAv1Enc.so.0:svt_av1_enc_get_stream_info
 libSvtAv1Enc.so.0:svt_av1_enc_init
 libSvtAv1Enc.so.0:svt_av1_enc_init_handle
+libSvtAv1Enc.so.0:svt_av1_enc_parse_parameter
 libSvtAv1Enc.so.0:svt_av1_enc_release_out_buffer
 libSvtAv1Enc.so.0:svt_av1_enc_send_picture
 libSvtAv1Enc.so.0:svt_av1_enc_set_parameter
