@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : SVT-AV1
-Version  : 1.5.0
-Release  : 19
-URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.5.0/SVT-AV1-v1.5.0.tar.gz
-Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.5.0/SVT-AV1-v1.5.0.tar.gz
+Version  : 1.6.0
+Release  : 20
+URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.6.0/SVT-AV1-v1.6.0.tar.gz
+Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.6.0/SVT-AV1-v1.6.0.tar.gz
 Summary  : AV1-compliant encoder library core.
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear MIT
@@ -75,31 +75,48 @@ license components for the SVT-AV1 package.
 
 
 %prep
-%setup -q -n SVT-AV1-v1.5.0
-cd %{_builddir}/SVT-AV1-v1.5.0
+%setup -q -n SVT-AV1-v1.6.0
+cd %{_builddir}/SVT-AV1-v1.6.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682612379
+export SOURCE_DATE_EPOCH=1687193337
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682612379
+export SOURCE_DATE_EPOCH=1687193337
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SVT-AV1
 cp %{_builddir}/SVT-AV1-v%{version}/LICENSE-BSD2.md %{buildroot}/usr/share/package-licenses/SVT-AV1/3a6355145854d7b1eab7a96b586b49b1f3925041 || :
@@ -109,15 +126,21 @@ cp %{_builddir}/SVT-AV1-v%{version}/third_party/cpuinfo/deps/clog/LICENSE %{buil
 cp %{_builddir}/SVT-AV1-v%{version}/third_party/fastfeat/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/7cbe19df00ff13a33eb7638354c37c4f7382f94f || :
 cp %{_builddir}/SVT-AV1-v%{version}/third_party/googletest/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/5a2314153eadadc69258a9429104cd11804ea304 || :
 cp %{_builddir}/SVT-AV1-v%{version}/third_party/safestringlib/LICENSE %{buildroot}/usr/share/package-licenses/SVT-AV1/4902cae9d3ebedcfbd51da29a80c5eba5c7e308a || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/SvtAv1DecApp
+/V3/usr/bin/SvtAv1EncApp
 /usr/bin/SvtAv1DecApp
 /usr/bin/SvtAv1EncApp
 
@@ -138,10 +161,12 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libSvtAv1Dec.so.0.8.7
+/V3/usr/lib64/libSvtAv1Enc.so.1.6.0
 /usr/lib64/libSvtAv1Dec.so.0
 /usr/lib64/libSvtAv1Dec.so.0.8.7
 /usr/lib64/libSvtAv1Enc.so.1
-/usr/lib64/libSvtAv1Enc.so.1.5.0
+/usr/lib64/libSvtAv1Enc.so.1.6.0
 
 %files license
 %defattr(0644,root,root,0755)
