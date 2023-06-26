@@ -5,7 +5,7 @@
 #
 Name     : SVT-AV1
 Version  : 1.6.0
-Release  : 20
+Release  : 21
 URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.6.0/SVT-AV1-v1.6.0.tar.gz
 Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.6.0/SVT-AV1-v1.6.0.tar.gz
 Summary  : AV1-compliant encoder library core.
@@ -83,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1687193337
+export SOURCE_DATE_EPOCH=1687797220
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -116,7 +116,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1687193337
+export SOURCE_DATE_EPOCH=1687797220
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SVT-AV1
 cp %{_builddir}/SVT-AV1-v%{version}/LICENSE-BSD2.md %{buildroot}/usr/share/package-licenses/SVT-AV1/3a6355145854d7b1eab7a96b586b49b1f3925041 || :
