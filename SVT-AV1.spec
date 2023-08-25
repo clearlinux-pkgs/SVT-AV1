@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : SVT-AV1
-Version  : 1.6.0
-Release  : 22
-URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.6.0/SVT-AV1-v1.6.0.tar.gz
-Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.6.0/SVT-AV1-v1.6.0.tar.gz
+Version  : 1.7.0
+Release  : 23
+URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.7.0/SVT-AV1-v1.7.0.tar.gz
+Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.7.0/SVT-AV1-v1.7.0.tar.gz
 Summary  : AV1-compliant encoder library core.
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear MIT
@@ -75,15 +75,15 @@ license components for the SVT-AV1 package.
 
 
 %prep
-%setup -q -n SVT-AV1-v1.6.0
-cd %{_builddir}/SVT-AV1-v1.6.0
+%setup -q -n SVT-AV1-v1.7.0
+cd %{_builddir}/SVT-AV1-v1.7.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1687809686
+export SOURCE_DATE_EPOCH=1692982100
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -99,7 +99,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1687809686
+export SOURCE_DATE_EPOCH=1692982100
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SVT-AV1
 cp %{_builddir}/SVT-AV1-v%{version}/LICENSE-BSD2.md %{buildroot}/usr/share/package-licenses/SVT-AV1/3a6355145854d7b1eab7a96b586b49b1f3925041 || :
@@ -141,7 +141,7 @@ popd
 /usr/lib64/libSvtAv1Dec.so.0
 /usr/lib64/libSvtAv1Dec.so.0.8.7
 /usr/lib64/libSvtAv1Enc.so.1
-/usr/lib64/libSvtAv1Enc.so.1.6.0
+/usr/lib64/libSvtAv1Enc.so.1.7.0
 
 %files license
 %defattr(0644,root,root,0755)
