@@ -7,7 +7,7 @@
 #
 Name     : SVT-AV1
 Version  : 2.2.1
-Release  : 32
+Release  : 33
 URL      : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.2.1/SVT-AV1-v2.2.1.tar.gz
 Source0  : https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.2.1/SVT-AV1-v2.2.1.tar.gz
 Summary  : AV1-compliant encoder library core.
